@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IPL Auction</title>
+
+<style>
+body{
+font-family: Arial;
+background:#f4f4f4;
+text-align:center;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+width:80%;
+background:white;
+}
+
+th,td{
+padding:10px;
+border:1px solid #ddd;
+}
+
+th{
+background:#ff4d4d;
+color:white;
+}
+
+button{
+padding:6px 10px;
+background:#28a745;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+input{
+padding:5px;
+width:80px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🏏 IPL Auction</h1>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Player</th>
+<th>Team</th>
+<th>Current Price</th>
+<th>Bid</th>
+</tr>
+
+{% for player in players %}
+
+<tr>
+
+<td>{{player[0]}}</td>
+<td>{{player[1]}}</td>
+<td>{{player[3]}}</td>
+<td>{{player[5]}}</td>
+
+<td>
+
+<form action="/bid/{{player[0]}}" method="POST">
+
+<input
+type="number"
+name="bid"
+min="{{player[5] + 1}}"
+required
+>
+
+<button type="submit">Bid</button>
+
+</form>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
